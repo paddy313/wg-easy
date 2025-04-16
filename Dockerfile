@@ -44,12 +44,12 @@ RUN update-alternatives --install /sbin/iptables iptables /sbin/iptables-legacy 
 # Set Environment
 ENV DEBUG=Server,WireGuard
 
+# Run Web UI
+WORKDIR /app
+
 # Add the entrypoint script
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
-
-# Run Web UI
-WORKDIR /app
 
 # Set the entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
