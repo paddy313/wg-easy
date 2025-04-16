@@ -55,5 +55,9 @@ ENV INIT_ENABLED=false
 
 LABEL org.opencontainers.image.source=https://github.com/wg-easy/wg-easy
 
-# Run Web UI
-CMD ["/usr/bin/dumb-init", "node", "server/index.mjs"]
+# Add the entrypoint script
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
